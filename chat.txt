@@ -1,0 +1,30 @@
+Vamos a realizar un proyecto en PYTHON y flask para un taller de reparaciones. 
+Importante ¡¡¡ LOs nombres de objetos, funciones, etc, sera en español y se documentará todo en español!!!.
+Se utilizara UTF8 , moneda €, fecha en formato 'dd/mm/aaaa'.
+La bbdd será sqlite3 ya creada 'bbdd_rosat.sqlite3'y no utilizaremos sqlalchemy.
+La carpeta que almacena todo el proyecto se llama 'rosat'
+Utiliza Bootstrap el tema que mas te guste a ti.
+Vamos a utilizar git y lo subiremos a github.
+Se basará en metodos CRUD para introducir datos en la bbdd.
+
+Tendra una pagina de login inicial.(usuario y contraseña de la tabla_usuarios)
+Una pagina principal con un menu que abrira una pagina por tabla de la bbdd: 
+    tabla_poblacion
+    tabla_aparatos
+    tabla_marcas
+    tabla_empleados
+    tabla_compañias
+    tabla_grupos
+    tabla_estados
+    tabla_articulo
+    tabla_agenda
+    tabla_clientes
+    tabla_lineas_avisos
+    tabla_avisos
+
+Estudia la bbdd adjunta y dime que directorios y archivos debo crear para iniciar el proyecto.
+Ya he creado el entorno virtual y la bbdd.
+
+
+
+    
