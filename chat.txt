@@ -28,3 +28,7 @@ Ya he creado el entorno virtual y la bbdd.
 
 
     
+omitimos el readme por ahora. Vamos a crear el codigo para la pagina de login y la principal que tendrá los botones para abrir las paginas para los crud de las tablas.
+Importante ¡¡¡ LOs nombres de objetos, funciones, etc, sera en español y se documentará todo en español!!!.
+Se utilizara UTF8 , moneda €, fecha en formato 'dd/mm/aaaa'.
+Utiliza Bootstrap el tema que mas te guste a ti.

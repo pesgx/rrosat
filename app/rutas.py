@@ -1,16 +1,43 @@
-from flask import render_template, request, redirect, url_for
-from app.modelos.usuarios import verificar_usuario
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from app.modelos.conexion import obtener_conexion
 
-def registrar_rutas(app):
-    @app.route('/')
-    def login():
-        return render_template('login.html')
+app = Flask(__name__)
+app.secret_key = 'clave_secreta_para_sesiones'
 
-    @app.route('/menu')
-    def menu_principal():
-        return render_template('menu.html')
+# Ruta para la página de login
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    """
+    Página de inicio de sesión. Verifica el usuario y la contraseña.
+    """
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        contrasena = request.form['contrasena']
 
-    # Rutas específicas por tabla
-    @app.route('/clientes')
-    def clientes():
-        return render_template('clientes.html')
+        # Conexión a la base de datos
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+        cursor.execute("SELECT * FROM tabla_usuarios WHERE nombre_usuario = ? AND contrasena = ?", (usuario, contrasena))
+        usuario_encontrado = cursor.fetchone()
+        conexion.close()
+
+        if usuario_encontrado:
+            session['usuario'] = usuario  # Guardar usuario en sesión
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('pagina_principal'))
+        else:
+            flash('Usuario o contraseña incorrectos', 'danger')
+
+    return render_template('login.html')
+
+# Ruta para la página principal
+@app.route('/principal')
+def pagina_principal():
+    """
+    Página principal con botones para abrir las páginas CRUD de las tablas.
+    """
+    if 'usuario' not in session:
+        flash('Debes iniciar sesión primero', 'warning')
+        return redirect(url_for('login'))
+
+    return render_template('principal.html')
